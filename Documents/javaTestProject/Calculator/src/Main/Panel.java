@@ -2,11 +2,14 @@ package Main;
 
 
 import javax.swing.*;
+import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class Panel extends JPanel {
 
@@ -36,6 +39,7 @@ public class Panel extends JPanel {
     private String store;
     private StringBuilder back;
     private int idel = 8;
+
 
     private int max_width = 241, max_height = 330;
 
@@ -115,7 +119,6 @@ public class Panel extends JPanel {
         add(screen);
 
         label.setBounds(5,0, max_width,140);
-        label.setText("Empty");
         add(label);
 
         // Реализация на уровене интерфейса
@@ -130,6 +133,7 @@ public class Panel extends JPanel {
 
             if (b == cln) {
                 screen.setText(null);  // screen.setText(""); делает тоже самое
+                label.setText(null);
                 return;
             }
             if (b == del /*|| b == backspace*/)
@@ -151,6 +155,23 @@ public class Panel extends JPanel {
             if (b == eqv){
                 back = new StringBuilder(screen.getText());
                 new Solve(back);
+            }
+            //todo Сделать вывод сложения в label
+            if (b == plus){
+                PLUS((String)screen.getText());
+                label.setText(screen.getText() /*+ b.getText()*/);
+            }
+            if (b == min){
+                MINUS((String)screen.getText());
+                label.setText(screen.getText() /*+ b.getText()*/);
+            }
+            if (b == mult){
+                MULTIPLY((String)screen.getText());
+                label.setText(screen.getText() /*+ b.getText()*/);
+            }
+            if (b == dev){
+                DEVIDE((String)screen.getText());
+                label.setText(screen.getText() /*+ b.getText()*/);
             }
             screen.setFont(font_for_screen);
             screen.setText(screen.getText() + b.getText());
@@ -195,5 +216,18 @@ public class Panel extends JPanel {
                 }
             }
         });
+    }
+
+    public String PLUS (String str){
+        return str;
+    }
+    public String MINUS (String str){
+        return str;
+    }
+    public String MULTIPLY (String str){
+        return str;
+    }
+    public String DEVIDE (String str){
+        return str;
     }
 }
